@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import logoWhite from "@/assets/logo-white.png.asset.json";
+import logoHand from "@/assets/logo-hand-white.png.asset.json";
 import { useLang } from "@/lib/i18n";
 
 export function Hero() {
@@ -27,9 +27,9 @@ export function Hero() {
         className="relative mx-auto max-w-4xl px-6 pb-20 pt-28 text-center"
       >
         <motion.img
-          src={logoWhite.url}
+          src={logoHand.url}
           alt="Handchecks"
-          className="mx-auto h-9 w-auto sm:h-11"
+          className="mx-auto h-12 w-auto sm:h-16"
           initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
