@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
+import { createContext, useContext, useMemo, useState, type Context, type ReactNode } from "react";
 
 export type Lang = "en" | "fr";
 
@@ -149,7 +149,11 @@ export const content = {
 
 type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: (typeof content)["en"] };
 
-const LangContext = createContext<Ctx | null>(null);
+// Keep a single context instance across hot reloads, otherwise providers and
+// consumers can end up bound to different contexts after an HMR update.
+const g = globalThis as unknown as { __langCtx?: Context<Ctx | null> };
+const LangContext = (g.__langCtx ??= createContext<Ctx | null>(null));
+
 
 export function LangProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Lang>("en");
