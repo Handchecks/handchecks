@@ -86,23 +86,30 @@ export const content = {
     },
     services: {
       eyebrow: "Nos services",
-      title: "Deux leviers. Rien d'autre.",
+      title: "Trois niveaux. Un seul objectif.",
       sub: "Nous restons volontairement focalisés. Tout ce que nous construisons sert le même objectif : des conversations qualifiées dans votre messagerie.",
       items: [
         {
           tag: "01",
-          name: "Gestion publicitaire",
-          desc: "Tests créatifs, ciblage et optimisation quotidienne sur Meta. Nous mettons du budget derrière le contenu qui performe déjà, et coupons le reste.",
-          points: ["Stratégie et tests créatifs", "Optimisation quotidienne", "Tunnels pub vers DM", "Reporting transparent"],
+          name: "Création de contenu",
+          desc: "Nous tournons, montons et publions le contenu qui capte réellement votre audience — pensé pour attirer les bonnes personnes, pas juste des vues.",
+          points: ["Tournage sur place", "Montage et post-production", "Publication et calendrier éditorial", "Accroches pensées pour convertir"],
         },
         {
           tag: "02",
-          name: "Automatisations ManyChat",
+          name: "Gestion publicitaire",
+          desc: "Tests créatifs, ciblage et optimisation quotidienne sur Meta. Nous mettons du budget derrière le contenu qui performe déjà.",
+          points: ["Stratégie et tests créatifs", "Optimisation quotidienne", "Tunnels pub vers DM", "Reporting transparent"],
+        },
+        {
+          tag: "03",
+          name: "Automatisations DM",
           desc: "Des scénarios de DM qualifient chaque lead dès sa réponse, puis organisent toute votre boîte Instagram pour que votre équipe ne parle qu'aux acheteurs.",
           points: ["Déclencheurs mots-clés et stories", "Qualification automatique", "Boîte de réception organisée", "Séquences de relance"],
         },
       ],
     },
+
     process: {
       eyebrow: "Notre méthode",
       title: "Du scroll à l'appel de vente.",
