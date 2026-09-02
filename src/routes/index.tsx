@@ -1,24 +1,47 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { LangProvider } from "@/lib/i18n";
+import { SiteHeader } from "@/components/site/SiteHeader";
+import { Hero } from "@/components/site/Hero";
+import { Services } from "@/components/site/Services";
+import { Process } from "@/components/site/Process";
+import { Stats } from "@/components/site/Stats";
+import { Clients } from "@/components/site/Clients";
+import { Booking } from "@/components/site/Booking";
+import { SiteFooter } from "@/components/site/SiteFooter";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = "Handchecks — Instagram Ads & DM Automation Agency";
+const description =
+  "Handchecks turns your content into booked leads: Meta ads management plus ManyChat DM automations that qualify leads and organise your Instagram inbox.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <LangProvider>
+      <div className="bg-background text-foreground">
+        <SiteHeader />
+        <main>
+          <Hero />
+          <Services />
+          <Process />
+          <Stats />
+          <Clients />
+          <Booking />
+        </main>
+        <SiteFooter />
+      </div>
+    </LangProvider>
   );
 }
