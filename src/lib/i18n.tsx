@@ -9,7 +9,7 @@ export const content = {
       eyebrow: "Content-driven lead generation",
       title: "Your content brings attention.",
       titleAccent: "We turn it into booked leads.",
-      sub: "Handchecks runs your paid ads and automates your Instagram DMs so every conversation is qualified, answered and organised — without you touching the inbox.",
+      sub: "Handchecks creates your content — shooting, editing and publishing — puts paid budget behind it, and automates your Instagram DMs so every conversation is qualified, answered and organised.",
       cta: "Book a discovery call",
       scroll: "Scroll",
     },
@@ -70,10 +70,10 @@ export const content = {
   fr: {
     nav: { services: "Nos services", process: "Notre méthode", clients: "Clients", cta: "Réserver un appel" },
     hero: {
-      eyebrow: "Génération de leads par le contenu",
+      eyebrow: "Génération de leads via votre contenu",
       title: "Votre contenu attire l'attention.",
       titleAccent: "Nous la transformons en leads.",
-      sub: "Handchecks gère vos publicités et automatise vos DM Instagram pour que chaque conversation soit qualifiée, répondue et organisée — sans que vous touchiez à la boîte de réception.",
+      sub: "Handchecks crée votre contenu — tournage, montage et publication —, met du budget publicitaire derrière, et automatise vos DM Instagram pour que chaque conversation soit qualifiée, répondue et organisée.",
       cta: "Réserver un appel découverte",
       scroll: "Défiler",
     },
