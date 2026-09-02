@@ -151,7 +151,7 @@ type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: (typeof content)["en"] }
 
 // Keep a single context instance across hot reloads, otherwise providers and
 // consumers can end up bound to different contexts after an HMR update.
-const g = globalThis as unknown as { __langCtx?: React.Context<Ctx | null> };
+const g = globalThis as unknown as { __langCtx?: Context<Ctx | null> };
 const LangContext = (g.__langCtx ??= createContext<Ctx | null>(null));
 
 
