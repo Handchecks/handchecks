@@ -73,7 +73,7 @@ export const content = {
       eyebrow: "Génération de leads via votre contenu",
       title: "Votre contenu attire l'attention.",
       titleAccent: "Nous la transformons en leads.",
-      sub: "Handchecks crée votre contenu — tournage, montage et publication —, met du budget publicitaire derrière, et automatise vos DM Instagram pour que chaque conversation soit qualifiée, répondue et organisée.",
+      sub: "Handchecks crée votre contenu — tournage, montage et publication — met du budget publicitaire derrière, et automatise vos DM Instagram pour que chaque conversation soit qualifiée, répondue et organisée.",
       cta: "Réserver un appel découverte",
       scroll: "Défiler",
     },
