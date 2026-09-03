@@ -121,12 +121,11 @@ export const content = {
     stats: {
       eyebrow: "Les chiffres",
       title: "Des résultats mesurés.",
-      note: "Chiffres provisoires — vrais résultats bientôt.",
+      note: "",
       items: [
-        { value: 0, suffix: "+", label: "Leads qualifiés générés" },
-        { value: 0, suffix: "+", label: "Marques accompagnées" },
-        { value: 0, suffix: "%", label: "DM traités automatiquement" },
-        { value: 0, suffix: "x", label: "Retour sur dépense publicitaire" },
+        { value: 500, suffix: "+", label: "Vidéos créées" },
+        { value: 20, suffix: "+", label: "Marques accompagnées" },
+        { value: 400, suffix: "+", label: "Leads générés" },
       ],
     },
     clients: {
