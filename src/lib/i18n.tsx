@@ -66,8 +66,8 @@ export const content = {
     },
     booking: {
       eyebrow: "Next step",
-      title: "Let's talk for 20 minutes.",
-      sub: "A short discovery call to look at your content, your inbox and what we'd change first. No pitch deck, no pricing games.",
+      title: "Let's talk for 30 minutes.",
+      sub: "A free audit of your page: we look at your content, your inbox and what we'd change first.",
       placeholder: "Booking calendar coming soon.",
       cta: "Book a discovery call",
     },
@@ -136,8 +136,8 @@ export const content = {
     },
     booking: {
       eyebrow: "Prochaine étape",
-      title: "Parlons-en 20 minutes.",
-      sub: "Un court appel découverte pour regarder votre contenu, votre messagerie et ce que nous changerions en premier. Sans pitch deck, sans jeux de prix.",
+      title: "Parlons-en 30 minutes.",
+      sub: "Un audit gratuit de votre page : nous regardons votre contenu, votre messagerie et ce que nous changerions en premier.",
       placeholder: "Calendrier de réservation bientôt disponible.",
       cta: "Réserver un appel découverte",
     },
