@@ -41,7 +41,7 @@ export function Stats() {
           </h2>
         </Reveal>
 
-        <div className="mt-16 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {t.stats.items.map((s, i) => (
             <Reveal key={s.label} delay={i * 0.1}>
               <div className="border-t border-white/15 pt-6">
@@ -54,9 +54,11 @@ export function Stats() {
           ))}
         </div>
 
-        <Reveal delay={0.2}>
-          <p className="mt-14 text-xs text-white/35">{t.stats.note}</p>
-        </Reveal>
+        {t.stats.note ? (
+          <Reveal delay={0.2}>
+            <p className="mt-14 text-xs text-white/35">{t.stats.note}</p>
+          </Reveal>
+        ) : null}
       </div>
     </section>
   );
