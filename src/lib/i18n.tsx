@@ -136,8 +136,8 @@ export const content = {
     },
     booking: {
       eyebrow: "Prochaine étape",
-      title: "Parlons-en 20 minutes.",
-      sub: "Un court appel découverte pour regarder votre contenu, votre messagerie et ce que nous changerions en premier. Sans pitch deck, sans jeux de prix.",
+      title: "Parlons-en 30 minutes.",
+      sub: "Un audit gratuit de votre page : nous regardons votre contenu, votre messagerie et ce que nous changerions en premier.",
       placeholder: "Calendrier de réservation bientôt disponible.",
       cta: "Réserver un appel découverte",
     },
