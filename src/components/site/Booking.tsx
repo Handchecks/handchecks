@@ -3,18 +3,19 @@ import { Reveal } from "./Reveal";
 import { useLang } from "@/lib/i18n";
 
 /** Paste your Calendly / Cal.com link here to activate the embedded calendar. */
-export const BOOKING_URL = "";
+export const BOOKING_URL = "https://calendly.com/rayan-belabbes/book-a-call";
 
 function CalendlyEmbed({ url }: { url: string }) {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
+  const src = `${url}${url.includes("?") ? "&" : "?"}hide_gdpr_banner=1&background_color=ffffff`;
   return (
     <iframe
       title="Book a discovery call"
-      src={url}
+      src={src}
       loading="lazy"
-      className="h-[680px] w-full rounded-3xl border border-white/10 bg-white"
+      className="h-[760px] w-full rounded-3xl border border-white/10 bg-white"
     />
   );
 }
