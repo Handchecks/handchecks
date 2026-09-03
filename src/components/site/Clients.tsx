@@ -1,17 +1,16 @@
 import { Reveal } from "./Reveal";
 import { useLang } from "@/lib/i18n";
+import moroccanBrothers from "@/assets/client-moroccan-brothers.jpg.asset.json";
+import sofian from "@/assets/client-sofian.jpg.asset.json";
 
 const CLIENTS = [
-  "Moroccan Brothers",
-  "Mr Humble",
-  "Sofian Immobilier",
-  "Society Club — Monaco",
-  "Hillal Bnb",
-  "Padel Plaza",
+  { handle: "@moroccan_brothers", followers: "+15k", image: moroccanBrothers.url },
+  { handle: "@sofian.immobilier", followers: "+5k", image: sofian.url },
 ];
 
 export function Clients() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const followersLabel = lang === "fr" ? "abonnés" : "followers";
 
   return (
     <section id="clients" className="bg-background py-28 sm:py-40">
@@ -32,11 +31,22 @@ export function Clients() {
           </p>
         </Reveal>
 
-        <div className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-border bg-border md:grid-cols-3">
-          {CLIENTS.map((name, i) => (
-            <Reveal key={name} delay={i * 0.06}>
-              <div className="flex h-32 items-center justify-center bg-background px-6 text-center text-sm font-medium text-muted-foreground transition-colors duration-500 hover:text-foreground sm:h-40 sm:text-base">
-                {name}
+        <div className="mt-16 grid gap-8 sm:grid-cols-2">
+          {CLIENTS.map((c, i) => (
+            <Reveal key={c.handle} delay={i * 0.08}>
+              <div className="flex flex-col items-center gap-6 rounded-3xl border border-border bg-card px-8 py-12 text-center transition-colors duration-500 hover:border-foreground/25">
+                <img
+                  src={c.image}
+                  alt={`${c.handle} profile`}
+                  loading="lazy"
+                  className="h-28 w-28 rounded-full object-cover sm:h-32 sm:w-32"
+                />
+                <div>
+                  <p className="text-lg font-semibold sm:text-xl">{c.handle}</p>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    {c.followers} {followersLabel}
+                  </p>
+                </div>
               </div>
             </Reveal>
           ))}
