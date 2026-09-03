@@ -51,12 +51,11 @@ export const content = {
     stats: {
       eyebrow: "The numbers",
       title: "Results, measured.",
-      note: "Placeholder figures — real numbers coming soon.",
+      note: "",
       items: [
-        { value: 0, suffix: "+", label: "Qualified leads generated" },
-        { value: 0, suffix: "+", label: "Brands managed" },
-        { value: 0, suffix: "%", label: "DMs answered automatically" },
-        { value: 0, suffix: "x", label: "Average return on ad spend" },
+        { value: 500, suffix: "+", label: "Videos created" },
+        { value: 20, suffix: "+", label: "Brands managed" },
+        { value: 400, suffix: "+", label: "Leads generated" },
       ],
     },
     clients: {
