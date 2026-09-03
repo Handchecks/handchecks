@@ -60,10 +60,11 @@ export const content = {
     },
     clients: {
       eyebrow: "Clients",
-      title: "They trusted us.",
-      sub: "From real estate to hospitality and sport — brands that grew their inbox with Handchecks.",
+      title: "A few of the accounts we grew.",
+      sub: "Real estate, hospitality, sport, entertainment — from Moroccan Brothers to Sofian Immobilier, Mr Humble, Society Club Monaco, Hillal Bnb and Padel Plaza.",
       more: "and more",
     },
+
     booking: {
       eyebrow: "Next step",
       title: "Let's talk for 30 minutes.",
