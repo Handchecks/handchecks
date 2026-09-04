@@ -19,16 +19,17 @@ const CLIENTS = [
   { handle: "@sofian.immobilier", followers: 5, views: 1, image: sofian.url },
 ];
 
+// Scattered "cloud" placement: x/y in % of the cloud box, size in % of its width.
 const LOGOS = [
-  { src: logo8.url, name: "Jet 7 Auto" },
-  { src: logo9.url, name: "Hello Pilates", cover: true },
-  { src: logo11.url, name: "Casanova" },
-  { src: logo10.url, name: "AFM" },
-  { src: logo7.url, name: "Jumeirah Premium Auto", cover: true },
-  { src: logo42.url, name: "Padel Plaza" },
-  { src: logo52.url, name: "Hillal Bnb", cover: true },
-  { src: logo62.url, name: "Kleaning", dark: true },
-  { src: logo32.url, name: "Society Club Monte-Carlo", dark: true },
+  { src: logo8.url, name: "Jet 7 Auto", x: 8, y: 22, size: 15, order: 0 },
+  { src: logo9.url, name: "Hello Pilates", x: 26, y: 4, size: 12, order: 4 },
+  { src: logo11.url, name: "Casanova", x: 42, y: 26, size: 17, order: 1 },
+  { src: logo10.url, name: "AFM", x: 65, y: 6, size: 13, order: 6 },
+  { src: logo7.url, name: "Jumeirah Premium Auto", x: 80, y: 28, size: 16, order: 2 },
+  { src: logo42.url, name: "Padel Plaza", x: 16, y: 62, size: 14, order: 5 },
+  { src: logo52.url, name: "Hillal Bnb", x: 38, y: 72, size: 13, order: 8 },
+  { src: logo62.url, name: "Kleaning", x: 58, y: 60, size: 15, order: 3 },
+  { src: logo32.url, name: "Society Club Monte-Carlo", x: 82, y: 74, size: 14, order: 7 },
 ];
 
 function Counter({ value, prefix = "+", suffix }: { value: number; prefix?: string; suffix: string }) {
