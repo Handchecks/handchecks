@@ -4,15 +4,15 @@ import { useLang } from "@/lib/i18n";
 import { Reveal } from "./Reveal";
 import moroccanBrothers from "@/assets/client-moroccan-brothers.jpg.asset.json";
 import sofian from "@/assets/client-sofian.jpg.asset.json";
-import logo8 from "@/assets/logo-8.png.asset.json";
-import logo9 from "@/assets/logo-9.png.asset.json";
-import logo10 from "@/assets/logo-10.png.asset.json";
-import logo11 from "@/assets/logo-11.png.asset.json";
-import logo7 from "@/assets/logo-7.png.asset.json";
-import logo42 from "@/assets/logo-4-2.png.asset.json";
-import logo52 from "@/assets/logo-5-2.png.asset.json";
-import logo62 from "@/assets/logo-6-2.png.asset.json";
-import logo32 from "@/assets/logo-3-2.png.asset.json";
+import logo8 from "@/assets/logo-8-cut.png.asset.json";
+import logo9 from "@/assets/logo-9-cut.png.asset.json";
+import logo10 from "@/assets/logo-10-cut.png.asset.json";
+import logo11 from "@/assets/logo-11-cut.png.asset.json";
+import logo7 from "@/assets/logo-7-cut.png.asset.json";
+import logo42 from "@/assets/logo-4-2-cut.png.asset.json";
+import logo52 from "@/assets/logo-5-2-cut.png.asset.json";
+import logo62 from "@/assets/logo-6-2-cut.png.asset.json";
+import logo32 from "@/assets/logo-3-2-cut.png.asset.json";
 
 const CLIENTS = [
   { handle: "@moroccan_brothers", followers: 15, views: 3, image: moroccanBrothers.url },
@@ -21,14 +21,14 @@ const CLIENTS = [
 
 const LOGOS = [
   { src: logo8.url, name: "Jet 7 Auto" },
-  { src: logo9.url, name: "Hello Pilates" },
+  { src: logo9.url, name: "Hello Pilates", cover: true },
   { src: logo11.url, name: "Casanova" },
   { src: logo10.url, name: "AFM" },
-  { src: logo7.url, name: "Jumeirah Premium Auto" },
+  { src: logo7.url, name: "Jumeirah Premium Auto", cover: true },
   { src: logo42.url, name: "Padel Plaza" },
-  { src: logo52.url, name: "Hillal Bnb" },
-  { src: logo62.url, name: "Kleaning" },
-  { src: logo32.url, name: "Society Club Monte-Carlo" },
+  { src: logo52.url, name: "Hillal Bnb", cover: true },
+  { src: logo62.url, name: "Kleaning", dark: true },
+  { src: logo32.url, name: "Society Club Monte-Carlo", dark: true },
 ];
 
 function Counter({ value, prefix = "+", suffix }: { value: number; prefix?: string; suffix: string }) {
@@ -95,7 +95,7 @@ function ClientPanel({
 
 function LogoCloud() {
   return (
-    <div className="mx-auto grid max-w-3xl grid-cols-3 gap-6 sm:grid-cols-5 sm:gap-8">
+    <div className="mx-auto grid max-w-4xl grid-cols-3 gap-6 sm:grid-cols-5 sm:gap-10">
       {LOGOS.map((l, i) => (
         <motion.div
           key={l.name}
@@ -105,12 +105,22 @@ function LogoCloud() {
           transition={{ duration: 0.5, delay: i * 0.08, ease: [0.34, 1.56, 0.64, 1] }}
           className="flex items-center justify-center"
         >
-          <img
-            src={l.src}
-            alt={l.name}
-            loading="lazy"
-            className="h-16 w-16 rounded-full object-contain sm:h-20 sm:w-20"
-          />
+          <div
+            className={`flex h-24 w-24 items-center justify-center overflow-hidden rounded-full ring-1 ring-foreground/10 sm:h-28 sm:w-28 ${
+              l.dark ? "bg-foreground" : "bg-foreground/[0.04]"
+            }`}
+          >
+            <img
+              src={l.src}
+              alt={l.name}
+              loading="lazy"
+              className={
+                l.cover
+                  ? "h-full w-full object-cover"
+                  : "h-full w-full scale-[0.82] object-contain"
+              }
+            />
+          </div>
         </motion.div>
       ))}
     </div>
