@@ -95,7 +95,7 @@ function ClientPanel({
 
 function LogoCloud() {
   return (
-    <div className="mx-auto grid max-w-3xl grid-cols-3 gap-6 sm:grid-cols-5 sm:gap-8">
+    <div className="mx-auto grid max-w-4xl grid-cols-3 gap-6 sm:grid-cols-5 sm:gap-10">
       {LOGOS.map((l, i) => (
         <motion.div
           key={l.name}
@@ -105,12 +105,22 @@ function LogoCloud() {
           transition={{ duration: 0.5, delay: i * 0.08, ease: [0.34, 1.56, 0.64, 1] }}
           className="flex items-center justify-center"
         >
-          <img
-            src={l.src}
-            alt={l.name}
-            loading="lazy"
-            className="h-16 w-16 rounded-full object-contain sm:h-20 sm:w-20"
-          />
+          <div
+            className={`flex h-24 w-24 items-center justify-center overflow-hidden rounded-full ring-1 ring-foreground/10 sm:h-28 sm:w-28 ${
+              l.dark ? "bg-foreground" : "bg-foreground/[0.04]"
+            }`}
+          >
+            <img
+              src={l.src}
+              alt={l.name}
+              loading="lazy"
+              className={
+                l.cover
+                  ? "h-full w-full object-cover"
+                  : "h-full w-full scale-[0.82] object-contain"
+              }
+            />
+          </div>
         </motion.div>
       ))}
     </div>
