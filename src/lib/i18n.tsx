@@ -62,7 +62,7 @@ export const content = {
       eyebrow: "Clients",
       title: "A few of the accounts we grew.",
       sub: "Real estate, hospitality, sport, entertainment — from Moroccan Brothers to Sofian Immobilier, Mr Humble, Society Club Monaco, Hillal Bnb and Padel Plaza.",
-      more: "And many more results.\nYou could be the next one.",
+      more: "And many more!",
     },
 
     booking: {
@@ -133,7 +133,7 @@ export const content = {
       eyebrow: "Clients",
       title: "Quelques comptes que nous avons fait grandir.",
       sub: "Immobilier, hôtellerie, sport, divertissement — de Moroccan Brothers à Sofian Immobilier, Mr Humble, Society Club Monaco, Hillal Bnb et Padel Plaza.",
-      more: "Et bien d'autres résultats.\nVous pourriez être le prochain.",
+      more: "Et bien d'autres !",
     },
 
     booking: {

@@ -4,31 +4,32 @@ import { useLang } from "@/lib/i18n";
 import { Reveal } from "./Reveal";
 import moroccanBrothers from "@/assets/client-moroccan-brothers.jpg.asset.json";
 import sofian from "@/assets/client-sofian.jpg.asset.json";
-import logo8 from "@/assets/logo-8-cut.png.asset.json";
-import logo9 from "@/assets/logo-9-cut.png.asset.json";
-import logo10 from "@/assets/logo-10-cut.png.asset.json";
-import logo11 from "@/assets/logo-11-cut.png.asset.json";
-import logo7 from "@/assets/logo-7-cut.png.asset.json";
-import logo42 from "@/assets/logo-4-2-cut.png.asset.json";
-import logo52 from "@/assets/logo-5-2-cut.png.asset.json";
-import logo62 from "@/assets/logo-6-2-cut.png.asset.json";
-import logo32 from "@/assets/logo-3-2-cut.png.asset.json";
+import logo8 from "@/assets/logo-8-2-v2.png.asset.json";
+import logo9 from "@/assets/logo-9-2-v2.png.asset.json";
+import logo10 from "@/assets/logo-10-2-v2.png.asset.json";
+import logo11 from "@/assets/logo-11-2-v2.png.asset.json";
+import logo7 from "@/assets/logo-7-2-v2.png.asset.json";
+import logo42 from "@/assets/logo-4-3-v2.png.asset.json";
+import logo52 from "@/assets/logo-5-3-v2.png.asset.json";
+import logo62 from "@/assets/logo-6-3-v2.png.asset.json";
+import logo32 from "@/assets/logo-3-3-v2.png.asset.json";
 
 const CLIENTS = [
   { handle: "@moroccan_brothers", followers: 15, views: 3, image: moroccanBrothers.url },
   { handle: "@sofian.immobilier", followers: 5, views: 1, image: sofian.url },
 ];
 
+// Scattered "cloud" placement: x/y in % of the cloud box, size in % of its width.
 const LOGOS = [
-  { src: logo8.url, name: "Jet 7 Auto" },
-  { src: logo9.url, name: "Hello Pilates", cover: true },
-  { src: logo11.url, name: "Casanova" },
-  { src: logo10.url, name: "AFM" },
-  { src: logo7.url, name: "Jumeirah Premium Auto", cover: true },
-  { src: logo42.url, name: "Padel Plaza" },
-  { src: logo52.url, name: "Hillal Bnb", cover: true },
-  { src: logo62.url, name: "Kleaning", dark: true },
-  { src: logo32.url, name: "Society Club Monte-Carlo", dark: true },
+  { src: logo8.url, name: "Jet 7 Auto", x: 8, y: 22, size: 15, order: 0 },
+  { src: logo9.url, name: "Hello Pilates", x: 26, y: 4, size: 12, order: 4 },
+  { src: logo11.url, name: "Casanova", x: 42, y: 26, size: 17, order: 1 },
+  { src: logo10.url, name: "AFM", x: 65, y: 6, size: 13, order: 6 },
+  { src: logo7.url, name: "Jumeirah Premium Auto", x: 80, y: 28, size: 16, order: 2 },
+  { src: logo42.url, name: "Padel Plaza", x: 16, y: 62, size: 14, order: 5 },
+  { src: logo52.url, name: "Hillal Bnb", x: 38, y: 72, size: 13, order: 8 },
+  { src: logo62.url, name: "Kleaning", x: 58, y: 60, size: 15, order: 3 },
+  { src: logo32.url, name: "Society Club Monte-Carlo", x: 82, y: 74, size: 14, order: 7 },
 ];
 
 function Counter({ value, prefix = "+", suffix }: { value: number; prefix?: string; suffix: string }) {
@@ -93,36 +94,59 @@ function ClientPanel({
   );
 }
 
-function LogoCloud() {
+type Logo = (typeof LOGOS)[number];
+
+function LogoImg({ l }: { l: Logo }) {
+  return <img src={l.src} alt={l.name} loading="lazy" className="h-full w-full object-contain" />;
+}
+
+function boxStyle(l: Logo) {
+  return {
+    left: `${l.x}%`,
+    top: `${l.y}%`,
+    width: `${l.size}%`,
+  } as const;
+}
+
+function ScrollLogo({ l, progress }: { l: Logo; progress: MotionValue<number> }) {
+  const start = 0.6 + l.order * 0.038;
+  const opacity = useTransform(progress, [start, start + 0.05], [0, 1]);
+  const scale = useTransform(progress, [start, start + 0.035, start + 0.06], [0.4, 1.12, 1]);
   return (
-    <div className="mx-auto grid max-w-4xl grid-cols-3 gap-6 sm:grid-cols-5 sm:gap-10">
-      {LOGOS.map((l, i) => (
-        <motion.div
-          key={l.name}
-          initial={{ opacity: 0, scale: 0.6 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.5, delay: i * 0.08, ease: [0.34, 1.56, 0.64, 1] }}
-          className="flex items-center justify-center"
-        >
-          <div
-            className={`flex h-24 w-24 items-center justify-center overflow-hidden rounded-full ring-1 ring-foreground/10 sm:h-28 sm:w-28 ${
-              l.dark ? "bg-foreground" : "bg-foreground/[0.04]"
-            }`}
-          >
-            <img
-              src={l.src}
-              alt={l.name}
-              loading="lazy"
-              className={
-                l.cover
-                  ? "h-full w-full object-cover"
-                  : "h-full w-full scale-[0.82] object-contain"
-              }
-            />
-          </div>
-        </motion.div>
-      ))}
+    <motion.div
+      style={{ ...boxStyle(l), opacity, scale }}
+      className="absolute aspect-square -translate-x-1/2 -translate-y-1/2"
+    >
+      <LogoImg l={l} />
+    </motion.div>
+  );
+}
+
+function ViewLogo({ l }: { l: Logo }) {
+  return (
+    <motion.div
+      style={boxStyle(l)}
+      initial={{ opacity: 0, scale: 0.5 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.5, delay: l.order * 0.08, ease: [0.34, 1.56, 0.64, 1] }}
+      className="absolute aspect-square -translate-x-1/2 -translate-y-1/2"
+    >
+      <LogoImg l={l} />
+    </motion.div>
+  );
+}
+
+function LogoCloud({ progress }: { progress?: MotionValue<number> }) {
+  return (
+    <div className="relative mx-auto aspect-[16/9] w-full max-w-3xl">
+      {LOGOS.map((l) =>
+        progress ? (
+          <ScrollLogo key={l.name} l={l} progress={progress} />
+        ) : (
+          <ViewLogo key={l.name} l={l} />
+        ),
+      )}
     </div>
   );
 }
