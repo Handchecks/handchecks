@@ -4,15 +4,15 @@ import { useLang } from "@/lib/i18n";
 import { Reveal } from "./Reveal";
 import moroccanBrothers from "@/assets/client-moroccan-brothers.jpg.asset.json";
 import sofian from "@/assets/client-sofian.jpg.asset.json";
-import logo8 from "@/assets/logo-8-cut.png.asset.json";
-import logo9 from "@/assets/logo-9-cut.png.asset.json";
-import logo10 from "@/assets/logo-10-cut.png.asset.json";
-import logo11 from "@/assets/logo-11-cut.png.asset.json";
-import logo7 from "@/assets/logo-7-cut.png.asset.json";
-import logo42 from "@/assets/logo-4-2-cut.png.asset.json";
-import logo52 from "@/assets/logo-5-2-cut.png.asset.json";
-import logo62 from "@/assets/logo-6-2-cut.png.asset.json";
-import logo32 from "@/assets/logo-3-2-cut.png.asset.json";
+import logo8 from "@/assets/logo-8-2-v2.png.asset.json";
+import logo9 from "@/assets/logo-9-2-v2.png.asset.json";
+import logo10 from "@/assets/logo-10-2-v2.png.asset.json";
+import logo11 from "@/assets/logo-11-2-v2.png.asset.json";
+import logo7 from "@/assets/logo-7-2-v2.png.asset.json";
+import logo42 from "@/assets/logo-4-3-v2.png.asset.json";
+import logo52 from "@/assets/logo-5-3-v2.png.asset.json";
+import logo62 from "@/assets/logo-6-3-v2.png.asset.json";
+import logo32 from "@/assets/logo-3-3-v2.png.asset.json";
 
 const CLIENTS = [
   { handle: "@moroccan_brothers", followers: 15, views: 3, image: moroccanBrothers.url },
