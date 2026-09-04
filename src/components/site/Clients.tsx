@@ -94,36 +94,59 @@ function ClientPanel({
   );
 }
 
-function LogoCloud() {
+type Logo = (typeof LOGOS)[number];
+
+function LogoImg({ l }: { l: Logo }) {
+  return <img src={l.src} alt={l.name} loading="lazy" className="h-full w-full object-contain" />;
+}
+
+function boxStyle(l: Logo) {
+  return {
+    left: `${l.x}%`,
+    top: `${l.y}%`,
+    width: `${l.size}%`,
+  } as const;
+}
+
+function ScrollLogo({ l, progress }: { l: Logo; progress: MotionValue<number> }) {
+  const start = 0.6 + l.order * 0.038;
+  const opacity = useTransform(progress, [start, start + 0.05], [0, 1]);
+  const scale = useTransform(progress, [start, start + 0.035, start + 0.06], [0.4, 1.12, 1]);
   return (
-    <div className="mx-auto grid max-w-4xl grid-cols-3 gap-6 sm:grid-cols-5 sm:gap-10">
-      {LOGOS.map((l, i) => (
-        <motion.div
-          key={l.name}
-          initial={{ opacity: 0, scale: 0.6 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.5, delay: i * 0.08, ease: [0.34, 1.56, 0.64, 1] }}
-          className="flex items-center justify-center"
-        >
-          <div
-            className={`flex h-24 w-24 items-center justify-center overflow-hidden rounded-full ring-1 ring-foreground/10 sm:h-28 sm:w-28 ${
-              l.dark ? "bg-foreground" : "bg-foreground/[0.04]"
-            }`}
-          >
-            <img
-              src={l.src}
-              alt={l.name}
-              loading="lazy"
-              className={
-                l.cover
-                  ? "h-full w-full object-cover"
-                  : "h-full w-full scale-[0.82] object-contain"
-              }
-            />
-          </div>
-        </motion.div>
-      ))}
+    <motion.div
+      style={{ ...boxStyle(l), opacity, scale }}
+      className="absolute aspect-square -translate-x-1/2 -translate-y-1/2"
+    >
+      <LogoImg l={l} />
+    </motion.div>
+  );
+}
+
+function ViewLogo({ l }: { l: Logo }) {
+  return (
+    <motion.div
+      style={boxStyle(l)}
+      initial={{ opacity: 0, scale: 0.5 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.5, delay: l.order * 0.08, ease: [0.34, 1.56, 0.64, 1] }}
+      className="absolute aspect-square -translate-x-1/2 -translate-y-1/2"
+    >
+      <LogoImg l={l} />
+    </motion.div>
+  );
+}
+
+function LogoCloud({ progress }: { progress?: MotionValue<number> }) {
+  return (
+    <div className="relative mx-auto aspect-[16/9] w-full max-w-3xl">
+      {LOGOS.map((l) =>
+        progress ? (
+          <ScrollLogo key={l.name} l={l} progress={progress} />
+        ) : (
+          <ViewLogo key={l.name} l={l} />
+        ),
+      )}
     </div>
   );
 }
