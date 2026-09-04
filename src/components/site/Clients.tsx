@@ -21,14 +21,14 @@ const CLIENTS = [
 
 const LOGOS = [
   { src: logo8.url, name: "Jet 7 Auto" },
-  { src: logo9.url, name: "Hello Pilates" },
+  { src: logo9.url, name: "Hello Pilates", cover: true },
   { src: logo11.url, name: "Casanova" },
   { src: logo10.url, name: "AFM" },
-  { src: logo7.url, name: "Jumeirah Premium Auto" },
+  { src: logo7.url, name: "Jumeirah Premium Auto", cover: true },
   { src: logo42.url, name: "Padel Plaza" },
-  { src: logo52.url, name: "Hillal Bnb" },
-  { src: logo62.url, name: "Kleaning" },
-  { src: logo32.url, name: "Society Club Monte-Carlo" },
+  { src: logo52.url, name: "Hillal Bnb", cover: true },
+  { src: logo62.url, name: "Kleaning", dark: true },
+  { src: logo32.url, name: "Society Club Monte-Carlo", dark: true },
 ];
 
 function Counter({ value, prefix = "+", suffix }: { value: number; prefix?: string; suffix: string }) {
