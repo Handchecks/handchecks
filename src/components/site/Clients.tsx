@@ -118,11 +118,21 @@ function boxStyle(l: Logo) {
 
 function ScrollLogo({ l, progress }: { l: Logo; progress: MotionValue<number> }) {
   const start = 0.6 + l.order * 0.038;
-  const opacity = useTransform(progress, [start, start + 0.05], [0, 1]);
-  const scale = useTransform(progress, [start, start + 0.035, start + 0.06], [0.4, 1.12, 1]);
+  const [shown, setShown] = useState(false);
+
+  useEffect(() => {
+    if (progress.get() >= start) setShown(true);
+    return progress.on("change", (v) => {
+      if (v >= start) setShown(true);
+    });
+  }, [progress, start]);
+
   return (
     <motion.div
-      style={{ ...boxStyle(l), opacity, scale }}
+      style={boxStyle(l)}
+      initial={false}
+      animate={shown ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.4 }}
+      transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
       className="absolute aspect-square -translate-x-1/2 -translate-y-1/2"
     >
       <LogoImg l={l} />
