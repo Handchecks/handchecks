@@ -1,5 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import { animate, useInView, useScroll, useTransform, motion, useReducedMotion } from "motion/react";
+import {
+  animate,
+  useInView,
+  useScroll,
+  useTransform,
+  motion,
+  useReducedMotion,
+  type MotionValue,
+} from "motion/react";
 import { useLang } from "@/lib/i18n";
 import { Reveal } from "./Reveal";
 import moroccanBrothers from "@/assets/client-moroccan-brothers.jpg.asset.json";
@@ -206,7 +214,7 @@ export function Clients() {
                 />
               ))}
               <div className="flex w-screen shrink-0 flex-col items-center justify-center gap-12 px-6">
-                <LogoCloud />
+                <LogoCloud progress={scrollYProgress} />
                 <p className="whitespace-pre-line text-center text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
                   {t.clients.more}
                 </p>
