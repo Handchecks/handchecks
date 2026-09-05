@@ -1,5 +1,31 @@
+import { motion } from "motion/react";
+import { BadgeCheck, Inbox } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { useLang } from "@/lib/i18n";
+
+function EyesIcon() {
+  return (
+    <svg viewBox="0 0 48 32" className="h-12 w-12" aria-hidden>
+      <ellipse cx="14" cy="16" rx="13" ry="15" fill="currentColor" />
+      <ellipse cx="34" cy="16" rx="13" ry="15" fill="currentColor" />
+      <ellipse cx="14" cy="16" rx="8.5" ry="10.5" fill="hsl(var(--background))" />
+      <ellipse cx="34" cy="16" rx="8.5" ry="10.5" fill="hsl(var(--background))" />
+      <circle cx="16.5" cy="17" r="5.5" fill="currentColor" />
+      <circle cx="36.5" cy="17" r="5.5" fill="currentColor" />
+    </svg>
+  );
+}
+
+function CheckIcon() {
+  return <BadgeCheck className="h-12 w-12" strokeWidth={0} fill="currentColor" aria-hidden />;
+}
+
+function InboxIcon() {
+  return <Inbox className="h-12 w-12" strokeWidth={1.75} aria-hidden />;
+}
+
+const icons = [EyesIcon, CheckIcon, InboxIcon];
+
 
 export function Process() {
   const { t } = useLang();
