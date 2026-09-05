@@ -1,5 +1,32 @@
+import { motion } from "motion/react";
+import { Video, MessageCircle } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { useLang } from "@/lib/i18n";
+
+function CameraIcon() {
+  return <Video className="h-8 w-8" strokeWidth={1.5} aria-hidden />;
+}
+
+function MetaIcon() {
+  return (
+    <svg viewBox="0 0 48 32" className="h-8 w-8" fill="none" aria-hidden>
+      <path
+        d="M6 22c0-8 4-14 8.5-14 3.5 0 5.7 2.7 8.6 7.5 1.2 2 2.6 4.6 4.3 7.2 2.4 3.7 4.1 5.3 6.4 5.3 2.9 0 4.6-2.5 4.6-6.7 0-4.7-2.2-9.8-5.2-9.8-2 0-3.9 1.7-5.8 4.8m-8.6-2.3C16.9 10.7 14.6 8 11.6 8 7.7 8 4 13 4 20.3 4 25 6.3 28 9.9 28c2.6 0 4.5-1.5 7.1-5.6"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function ChatIcon() {
+  return <MessageCircle className="h-8 w-8" strokeWidth={1.5} aria-hidden />;
+}
+
+const icons = [CameraIcon, MetaIcon, ChatIcon];
+
 
 export function Services() {
   const { t } = useLang();
