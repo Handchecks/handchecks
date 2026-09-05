@@ -87,7 +87,9 @@ export function Process() {
                   </p>
                 </div>
               </Reveal>
-            ))}
+              );
+            })}
+
           </div>
         </div>
       </div>
