@@ -61,13 +61,27 @@ export function Process() {
           </div>
 
           <div className="space-y-4">
-            {t.process.steps.map((s, i) => (
+            {t.process.steps.map((s, i) => {
+              const Icon = icons[i] ?? icons[0]!;
+              return (
               <Reveal key={s.n} delay={i * 0.12}>
                 <div className="rounded-3xl bg-background p-8 sm:p-10">
-                  <div className="flex items-baseline gap-5">
-                    <span className="text-sm tabular-nums text-muted-foreground">{s.n}</span>
-                    <h3 className="text-2xl font-semibold sm:text-3xl">{s.t}</h3>
+                  <div className="flex items-start justify-between gap-5">
+                    <div className="flex items-baseline gap-5">
+                      <span className="text-sm tabular-nums text-muted-foreground">{s.n}</span>
+                      <h3 className="text-2xl font-semibold sm:text-3xl">{s.t}</h3>
+                    </div>
+                    <motion.span
+                      className="shrink-0 text-foreground"
+                      initial={{ opacity: 0, y: -6 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-80px" }}
+                      transition={{ duration: 0.8, delay: 0.3 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <Icon />
+                    </motion.span>
                   </div>
+
                   <p className="mt-4 pl-10 text-sm leading-relaxed text-muted-foreground sm:text-base">
                     {s.d}
                   </p>
