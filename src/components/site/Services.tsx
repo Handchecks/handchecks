@@ -58,7 +58,9 @@ export function Services() {
                 </ul>
               </article>
             </Reveal>
-          ))}
+            );
+          })}
+
         </div>
       </div>
     </section>
