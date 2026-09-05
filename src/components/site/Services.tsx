@@ -24,11 +24,25 @@ export function Services() {
         </Reveal>
 
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {t.services.items.map((item, i) => (
+          {t.services.items.map((item, i) => {
+            const Icon = icons[i] ?? icons[0];
+            return (
             <Reveal key={item.tag} delay={0.1 + i * 0.1}>
               <article className="group h-full rounded-3xl border border-border bg-card p-8 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_-30px_rgba(0,0,0,0.35)] sm:p-10">
-                <span className="text-xs tracking-[0.2em] text-muted-foreground">{item.tag}</span>
+                <div className="flex items-start justify-between">
+                  <span className="text-xs tracking-[0.2em] text-muted-foreground">{item.tag}</span>
+                  <motion.span
+                    className="text-foreground"
+                    initial={{ opacity: 0, y: -6 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.8, delay: 0.3 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <Icon />
+                  </motion.span>
+                </div>
                 <h3 className="mt-6 text-2xl font-semibold sm:text-3xl">{item.name}</h3>
+
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
                   {item.desc}
                 </p>
