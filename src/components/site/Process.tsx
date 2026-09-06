@@ -10,10 +10,11 @@ function EyesIcon() {
         d="M2 16C7.5 7 15.2 2.5 24 2.5S40.5 7 46 16c-5.5 9-13.2 13.5-22 13.5S7.5 25 2 16Z"
         fill="none"
         stroke="currentColor"
-        strokeWidth="3"
+        strokeWidth="5"
         strokeLinejoin="round"
       />
-      <circle cx="24" cy="16" r="6.5" fill="currentColor" />
+      <circle cx="24" cy="16" r="8" fill="currentColor" />
+
     </svg>
   );
 }
