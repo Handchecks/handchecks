@@ -8,7 +8,7 @@ export const content = {
     hero: {
       eyebrow: "Content-driven lead generation",
       title: "Your content brings attention.",
-      titleAccent: "We turn it into booked leads.",
+      titleAccent: "We turn it into leads.",
       sub: "We create your content, run ads behind it, and automate your Instagram DMs so every conversation is qualified, answered and organised.",
       cta: "Book a discovery call",
       scroll: "Scroll",
@@ -16,25 +16,25 @@ export const content = {
     services: {
       eyebrow: "What we do",
       title: "Three levels. One outcome.",
-      sub: "We keep the offer narrow on purpose. Everything we build feeds the same outcome: qualified conversations in your inbox.",
+      sub: "\n",
       items: [
         {
           tag: "01",
           name: "Content Creation",
-          desc: "We shoot, edit and publish the content your audience actually stops for — built to attract the right people, not just views.",
-          points: ["On-location shooting", "Editing & post-production", "Publishing & content calendar", "Hooks built for conversion"],
+          desc: "We shoot, edit, and publish content your audience actually stops for. We upload across every major platform (Instagram, TikTok, LinkedIn, YouTube...)",
+          points: ["On-location shooting", "Editing & post-production", "Publishing & content calendar"],
         },
         {
           tag: "02",
           name: "Ads Management",
-          desc: "Creative testing, targeting and daily optimisation on Meta. We put budget behind the content that already performs.",
+          desc: "Creative testing, targeting and daily optimisation. We put budget behind the content that already performs.",
           points: ["Creative strategy & testing", "Daily budget optimisation", "Ad-to-DM funnels", "Transparent reporting"],
         },
         {
           tag: "03",
           name: "DM Automations",
           desc: "Automated DM flows qualify every lead the moment they reply, then sort your entire Instagram inbox so your team only speaks to buyers.",
-          points: ["Keyword & story-reply triggers", "Automatic lead qualification", "Full inbox organisation", "Follow-up sequences"],
+          points: ["✓\nKeyword & reply triggers", "Automatic lead qualification", "Full inbox organisation", "Follow-up sequences"],
         },
       ],
     },
@@ -45,7 +45,7 @@ export const content = {
       steps: [
         { n: "01", t: "Attention", d: "Your content and our ads put the right people in front of your offer, every single day." },
         { n: "02", t: "Qualification", d: "The moment they reply, automated DM flows ask the right questions and score the lead for you." },
-        { n: "03", t: "Organisation", d: "Qualified leads land in a clean, tagged inbox. Your team opens Instagram and closes — nothing else." },
+        { n: "03", t: "Organisation", d: "Qualified leads land in a clean, tagged inbox. Your team opens Instagram and closes. Nothing else." },
       ],
     },
     stats: {
@@ -61,14 +61,14 @@ export const content = {
     clients: {
       eyebrow: "Clients",
       title: "A few of the accounts we grew.",
-      sub: "Real estate, hospitality, sport, entertainment — from Moroccan Brothers to Sofian Immobilier, Mr Humble, Society Club Monaco, Hillal Bnb and Padel Plaza.",
+      sub: "From real estate to pilates studios, padel clubs, and car dealerships, we’ve worked with a diverse range of clients across different industries.",
       more: "And many more!",
     },
 
     booking: {
       eyebrow: "Next step",
       title: "Let's talk for 30 minutes.",
-      sub: "A free audit of your page: we look at your content, your inbox and what we'd change first.",
+      sub: "Get a free audit and a strategy for your brand. We’ll show you exactly what we’d change and give you a clear plan you can implement yourself or hire us to execute for you.",
       placeholder: "Booking calendar coming soon.",
       cta: "Book a discovery call",
     },
