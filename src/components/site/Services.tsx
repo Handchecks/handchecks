@@ -75,6 +75,10 @@ export function Services() {
                     </li>
                   ))}
                 </ul>
+                {item.note ? (
+                  <p className="mt-5 text-xs leading-relaxed text-muted-foreground">{item.note}</p>
+                ) : null}
+
               </article>
             </Reveal>
             );
