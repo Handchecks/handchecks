@@ -6,15 +6,18 @@ import { useLang } from "@/lib/i18n";
 function EyesIcon() {
   return (
     <svg viewBox="0 0 48 32" className="h-12 w-12" aria-hidden>
-      <ellipse cx="14" cy="16" rx="13" ry="15" fill="currentColor" />
-      <ellipse cx="34" cy="16" rx="13" ry="15" fill="currentColor" />
-      <ellipse cx="14" cy="16" rx="8.5" ry="10.5" fill="var(--background)" />
-      <ellipse cx="34" cy="16" rx="8.5" ry="10.5" fill="var(--background)" />
-      <circle cx="16.5" cy="17" r="5.5" fill="currentColor" />
-      <circle cx="36.5" cy="17" r="5.5" fill="currentColor" />
+      <path
+        d="M2 16C7.5 7 15.2 2.5 24 2.5S40.5 7 46 16c-5.5 9-13.2 13.5-22 13.5S7.5 25 2 16Z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinejoin="round"
+      />
+      <circle cx="24" cy="16" r="6.5" fill="currentColor" />
     </svg>
   );
 }
+
 
 function CheckIcon() {
   return (
