@@ -36,7 +36,7 @@ export const content = {
           tag: "03",
           name: "DM Automations",
           desc: "Automated DM flows qualify every lead the moment they reply, then sort your entire Instagram inbox so your team only speaks to buyers.",
-          points: ["✓\nKeyword & reply triggers", "Automatic lead qualification", "Full inbox organisation", "Follow-up sequences"],
+          points: ["✓\nKeyword & reply triggers", "✓\nAutomatic lead qualification", "✓\nFull inbox organisation", "✓\nFollow-up sequences"],
           note: "",
         },
       ],
