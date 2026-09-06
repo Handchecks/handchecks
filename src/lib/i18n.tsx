@@ -23,7 +23,7 @@ export const content = {
           name: "Content Creation",
           desc: "We shoot, edit, and publish content your audience actually stops for. We upload across every major platform (Instagram, TikTok, LinkedIn, YouTube...)",
           points: ["On-location shooting*", "Editing & post-production", "Publishing & content calendar"],
-          note: "*Depending on where you're based. We have teams in France, Spain and Morocco — other countries are possible, but travel costs apply.",
+          note: "*Depending on where you're based. We have teams in France, Spain and Morocco. Other countries are possible, but travel costs apply.",
         },
         {
           tag: "02",
