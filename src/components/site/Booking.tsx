@@ -7,16 +7,25 @@ export const BOOKING_URL = "https://calendly.com/rayan-belabbes/book-a-call";
 
 function CalendlyEmbed({ url }: { url: string }) {
   const [mounted, setMounted] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
   const src = `${url}${url.includes("?") ? "&" : "?"}hide_gdpr_banner=1&background_color=ffffff`;
   return (
-    <iframe
-      title="Book a discovery call"
-      src={src}
-      loading="lazy"
-      className="h-[760px] w-full rounded-3xl border border-white/10 bg-white"
-    />
+    <div className="relative h-[760px] w-full overflow-hidden rounded-3xl border border-white/10 bg-white">
+      {!loaded && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="h-8 w-8 animate-spin rounded-full border-2 border-black/15 border-t-black/60" />
+        </div>
+      )}
+      <iframe
+        title="Book a discovery call"
+        src={src}
+        loading="eager"
+        onLoad={() => setLoaded(true)}
+        className="h-full w-full"
+      />
+    </div>
   );
 }
 
