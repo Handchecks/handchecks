@@ -53,23 +53,24 @@ export function SiteHeader() {
               scrolled ? "border-border" : "border-white/25"
             }`}
           >
-            {(["en", "fr"] as const).map((l) => (
+            {([
+              ["en", "🇬🇧"],
+              ["fr", "🇫🇷"],
+            ] as const).map(([l, flag]) => (
               <button
                 key={l}
                 onClick={() => setLang(l)}
-                className={`rounded-full px-2.5 py-1 uppercase transition-colors ${
+                aria-label={l === "en" ? "English" : "Français"}
+                className={`rounded-full px-2 py-1 text-base leading-none transition-all ${
                   lang === l
-                    ? scrolled
-                      ? "bg-foreground text-background"
-                      : "bg-white text-black"
-                    : scrolled
-                      ? "text-muted-foreground"
-                      : "text-white/60"
+                    ? "opacity-100 scale-105"
+                    : "opacity-40 hover:opacity-70"
                 }`}
               >
-                {l}
+                {flag}
               </button>
             ))}
+
           </div>
 
           <a
