@@ -3,6 +3,29 @@ import logoWhite from "@/assets/logo-white.png.asset.json";
 import logoBlack from "@/assets/logo-black.png.asset.json";
 import { useLang } from "@/lib/i18n";
 
+function FlagUK() {
+  return (
+    <svg viewBox="0 0 60 40" className="h-full w-full" aria-hidden="true">
+      <rect width="60" height="40" fill="#012169" />
+      <path d="M0,0 60,40 M60,0 0,40" stroke="#fff" strokeWidth="8" />
+      <path d="M0,0 60,40 M60,0 0,40" stroke="#C8102E" strokeWidth="4" />
+      <path d="M30,0 V40 M0,20 H60" stroke="#fff" strokeWidth="13" />
+      <path d="M30,0 V40 M0,20 H60" stroke="#C8102E" strokeWidth="8" />
+    </svg>
+  );
+}
+
+function FlagFR() {
+  return (
+    <svg viewBox="0 0 60 40" className="h-full w-full" aria-hidden="true">
+      <rect width="20" height="40" fill="#002395" />
+      <rect x="20" width="20" height="40" fill="#fff" />
+      <rect x="40" width="20" height="40" fill="#ED2939" />
+    </svg>
+  );
+}
+
+
 export function SiteHeader() {
   const { lang, setLang, t } = useLang();
   const [scrolled, setScrolled] = useState(false);
