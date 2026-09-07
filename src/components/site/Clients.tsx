@@ -126,7 +126,7 @@ function boxStyle(l: Logo) {
 }
 
 function ScrollLogo({ l, progress }: { l: Logo; progress: MotionValue<number> }) {
-  const start = 0.6 + l.order * 0.038;
+  const start = 0.5 + l.order * 0.018;
   const [shown, setShown] = useState(false);
 
   useEffect(() => {
