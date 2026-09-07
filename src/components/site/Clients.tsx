@@ -105,7 +105,16 @@ function ClientPanel({
 type Logo = (typeof LOGOS)[number];
 
 function LogoImg({ l }: { l: Logo }) {
-  return <img src={l.src} alt={l.name} loading="lazy" className="h-full w-full object-contain" />;
+  return (
+    <img
+      src={l.src}
+      alt={l.name}
+      loading="eager"
+      decoding="async"
+      fetchPriority="high"
+      className="h-full w-full object-contain"
+    />
+  );
 }
 
 function boxStyle(l: Logo) {
