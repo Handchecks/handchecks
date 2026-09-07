@@ -171,7 +171,7 @@ function LogoCloud({ progress }: { progress?: MotionValue<number> }) {
 
 export function Clients() {
   const { t, lang } = useLang();
-  const followersLabel = lang === "fr" ? "abonnés" : "followers";
+  const followersLabel = "FOLLOWERS";
   const viewsLabel = lang === "fr" ? "vues" : "views";
   const trackRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
