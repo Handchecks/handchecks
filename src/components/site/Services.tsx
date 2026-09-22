@@ -2,14 +2,14 @@ import { motion } from "motion/react";
 import { Video, MessageCircle } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { useLang } from "@/lib/i18n";
-import metaLogo from "@/assets/meta-logo.png.asset.json";
+import metaLogo from "@/assets/opt/meta-logo.webp";
 
 function CameraIcon() {
   return <Video className="h-12 w-12" strokeWidth={0} fill="currentColor" aria-hidden />;
 }
 
 function MetaIcon() {
-  return <img src={metaLogo.url} alt="" className="h-12 w-12 object-contain" aria-hidden />;
+  return <img src={metaLogo} alt="" className="h-12 w-12 object-contain" aria-hidden />;
 }
 
 function ChatIcon() {

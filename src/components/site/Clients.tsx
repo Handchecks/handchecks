@@ -10,34 +10,34 @@ import {
 } from "motion/react";
 import { useLang } from "@/lib/i18n";
 import { Reveal } from "./Reveal";
-import moroccanBrothers from "@/assets/client-moroccan-brothers.jpg.asset.json";
-import sofian from "@/assets/client-sofian.jpg.asset.json";
-import logo8 from "@/assets/logo-8-2-v2.png.asset.json";
-import logo9 from "@/assets/logo-9-2-v2.png.asset.json";
-import logo10 from "@/assets/logo-10-2-v2.png.asset.json";
-import logo11 from "@/assets/logo-11-2-v2.png.asset.json";
-import logo7 from "@/assets/logo-7-2-v2.png.asset.json";
-import logo42 from "@/assets/logo-4-3-v2.png.asset.json";
-import logo52 from "@/assets/logo-5-3-v2.png.asset.json";
-import logo62 from "@/assets/logo-6-3-v2.png.asset.json";
-import logo32 from "@/assets/logo-3-3-v2.png.asset.json";
+import moroccanBrothers from "@/assets/opt/client-moroccan-brothers.webp";
+import sofian from "@/assets/opt/client-sofian.webp";
+import logo8 from "@/assets/opt/logo-8-2-v2.webp";
+import logo9 from "@/assets/opt/logo-9-2-v2.webp";
+import logo10 from "@/assets/opt/logo-10-2-v2.webp";
+import logo11 from "@/assets/opt/logo-11-2-v2.webp";
+import logo7 from "@/assets/opt/logo-7-2-v2.webp";
+import logo42 from "@/assets/opt/logo-4-3-v2.webp";
+import logo52 from "@/assets/opt/logo-5-3-v2.webp";
+import logo62 from "@/assets/opt/logo-6-3-v2.webp";
+import logo32 from "@/assets/opt/logo-3-3-v2.webp";
 
 const CLIENTS = [
-  { handle: "@moroccan_brothers", followers: 15, views: 3, image: moroccanBrothers.url },
-  { handle: "@sofian.immobilier", followers: 5, views: 1, image: sofian.url },
+  { handle: "@moroccan_brothers", followers: 15, views: 3, image: moroccanBrothers },
+  { handle: "@sofian.immobilier", followers: 5, views: 1, image: sofian },
 ];
 
 // Scattered "cloud" placement: x/y in % of the cloud box, size in % of its width.
 const LOGOS = [
-  { src: logo8.url, name: "Jet 7 Auto", x: 8, y: 22, size: 15, order: 0 },
-  { src: logo9.url, name: "Hello Pilates", x: 26, y: 4, size: 12, order: 4 },
-  { src: logo11.url, name: "Casanova", x: 42, y: 26, size: 17, order: 1 },
-  { src: logo10.url, name: "AFM", x: 65, y: 6, size: 13, order: 6 },
-  { src: logo7.url, name: "Jumeirah Premium Auto", x: 80, y: 28, size: 16, order: 2 },
-  { src: logo42.url, name: "Padel Plaza", x: 16, y: 62, size: 14, order: 5 },
-  { src: logo52.url, name: "Hillal Bnb", x: 38, y: 72, size: 13, order: 8 },
-  { src: logo62.url, name: "Kleaning", x: 58, y: 60, size: 15, order: 3 },
-  { src: logo32.url, name: "Society Club Monte-Carlo", x: 82, y: 74, size: 14, order: 7 },
+  { src: logo8, name: "Jet 7 Auto", x: 8, y: 22, size: 15, order: 0 },
+  { src: logo9, name: "Hello Pilates", x: 26, y: 4, size: 12, order: 4 },
+  { src: logo11, name: "Casanova", x: 42, y: 26, size: 17, order: 1 },
+  { src: logo10, name: "AFM", x: 65, y: 6, size: 13, order: 6 },
+  { src: logo7, name: "Jumeirah Premium Auto", x: 80, y: 28, size: 16, order: 2 },
+  { src: logo42, name: "Padel Plaza", x: 16, y: 62, size: 14, order: 5 },
+  { src: logo52, name: "Hillal Bnb", x: 38, y: 72, size: 13, order: 8 },
+  { src: logo62, name: "Kleaning", x: 58, y: 60, size: 15, order: 3 },
+  { src: logo32, name: "Society Club Monte-Carlo", x: 82, y: 74, size: 14, order: 7 },
 ];
 
 function Counter({ value, prefix = "+", suffix }: { value: number; prefix?: string; suffix: string }) {
@@ -111,7 +111,9 @@ function LogoImg({ l }: { l: Logo }) {
       alt={l.name}
       loading="eager"
       decoding="async"
-      fetchPriority="high"
+      fetchPriority="low"
+      width={256}
+      height={256}
       className="h-full w-full object-contain"
     />
   );

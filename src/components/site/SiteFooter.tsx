@@ -1,4 +1,4 @@
-import logoWhite from "@/assets/logo-white.png.asset.json";
+import logoWhite from "@/assets/opt/logo-white.webp";
 import { useLang } from "@/lib/i18n";
 
 export function SiteFooter() {
@@ -7,7 +7,7 @@ export function SiteFooter() {
   return (
     <footer className="dark border-t border-white/10 bg-background py-14 text-foreground">
       <div className="mx-auto flex max-w-6xl flex-col items-start gap-8 px-6 sm:flex-row sm:items-center sm:justify-between">
-        <img src={logoWhite.url} alt="Handchecks" className="h-6 w-auto" />
+        <img src={logoWhite} alt="Handchecks" className="h-6 w-auto" />
 
         <div className="flex flex-col gap-2 text-sm text-white/55 sm:items-end">
           <a href="mailto:support@handchecks.com" className="transition-colors hover:text-white">
