@@ -29,6 +29,10 @@ export function Hero() {
         <motion.img
           src={logoHand}
           alt="Handchecks"
+          width={600}
+          height={155}
+          fetchPriority="high"
+          decoding="async"
           className="mx-auto h-12 w-auto sm:h-16"
           initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
