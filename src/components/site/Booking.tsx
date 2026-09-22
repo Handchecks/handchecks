@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Reveal } from "./Reveal";
 import { useLang } from "@/lib/i18n";
 
@@ -6,25 +6,46 @@ import { useLang } from "@/lib/i18n";
 export const BOOKING_URL = "https://calendly.com/rayan-belabbes/book-a-call";
 
 function CalendlyEmbed({ url }: { url: string }) {
-  const [mounted, setMounted] = useState(false);
+  const boxRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  useEffect(() => setMounted(true), []);
-  if (!mounted) return null;
+
+  useEffect(() => {
+    const el = boxRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setVisible(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "1200px 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   const src = `${url}${url.includes("?") ? "&" : "?"}hide_gdpr_banner=1&background_color=ffffff`;
   return (
-    <div className="relative h-[760px] w-full overflow-hidden rounded-3xl border border-white/10 bg-white">
+    <div
+      ref={boxRef}
+      className="relative h-[760px] w-full overflow-hidden rounded-3xl border border-white/10 bg-white"
+    >
       {!loaded && (
         <div className="absolute inset-0 flex items-center justify-center">
           <span className="h-8 w-8 animate-spin rounded-full border-2 border-black/15 border-t-black/60" />
         </div>
       )}
-      <iframe
-        title="Book a discovery call"
-        src={src}
-        loading="eager"
-        onLoad={() => setLoaded(true)}
-        className="h-full w-full"
-      />
+      {visible && (
+        <iframe
+          title="Book a discovery call"
+          src={src}
+          loading="eager"
+          onLoad={() => setLoaded(true)}
+          className="h-full w-full"
+        />
+      )}
     </div>
   );
 }

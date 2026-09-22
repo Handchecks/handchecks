@@ -111,7 +111,9 @@ function LogoImg({ l }: { l: Logo }) {
       alt={l.name}
       loading="eager"
       decoding="async"
-      fetchPriority="high"
+      fetchPriority="low"
+      width={256}
+      height={256}
       className="h-full w-full object-contain"
     />
   );
