@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import logoWhite from "@/assets/logo-white.png.asset.json";
-import logoBlack from "@/assets/logo-black.png.asset.json";
+import logoWhite from "@/assets/opt/logo-white.webp";
+import logoBlack from "@/assets/opt/logo-black.webp";
 import { useLang } from "@/lib/i18n";
 
 function FlagUK() {
@@ -48,7 +48,7 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <a href="#top" className="flex items-center">
           <img
-            src={scrolled ? logoBlack.url : logoWhite.url}
+            src={scrolled ? logoBlack : logoWhite}
             alt="Handchecks"
             className="h-6 w-auto transition-opacity duration-500"
           />
