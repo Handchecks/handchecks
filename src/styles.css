@@ -172,3 +172,112 @@
     color: var(--color-foreground);
   }
 }
+
+/* Self-hosted font (no waiting on Google) */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/fonts/plus-jakarta-sans-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Scroll reveal: fade + slide up. Switched on by adding .is-in (see Reveal.tsx). */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, var(--rv-y, 28px), 0);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--rv-delay, 0s),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--rv-delay, 0s);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hero entrance: runs straight away, no JavaScript needed. */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, var(--y, 20px), 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes hero-logo {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+@keyframes hero-bob {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, 8px, 0);
+  }
+}
+.hero-in {
+  animation: hero-rise 1s cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0s) both;
+}
+.hero-fade {
+  animation: hero-fade 0.8s ease var(--delay, 0s) both;
+}
+.hero-logo {
+  animation: hero-logo 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-bob {
+  animation: hero-bob 2.4s ease-in-out infinite;
+}
+
+/* Soft white glow behind the hero. A gradient looks the same as the old blurred circle but is far lighter for phones to draw. */
+.hero-glow {
+  width: calc(70vh + 480px);
+  height: calc(70vh + 480px);
+  background: radial-gradient(
+    closest-side,
+    rgba(255, 255, 255, 0.067) 0%,
+    rgba(255, 255, 255, 0.065) 18%,
+    rgba(255, 255, 255, 0.056) 37%,
+    rgba(255, 255, 255, 0.035) 55%,
+    rgba(255, 255, 255, 0.014) 74%,
+    rgba(255, 255, 255, 0.003) 92%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .hero-in,
+  .hero-fade,
+  .hero-logo,
+  .hero-bob {
+    animation: none;
+  }
+}

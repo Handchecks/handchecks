@@ -1,14 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  animate,
-  useInView,
-  useScroll,
-  useTransform,
-  motion,
-  useReducedMotion,
-  type MotionValue,
-} from "motion/react";
 import { useLang } from "@/lib/i18n";
+import { onScrollProgress, useCountUp, useInViewOnce } from "@/lib/motion";
 import { Reveal } from "./Reveal";
 import moroccanBrothers from "@/assets/opt/client-moroccan-brothers.webp";
 import sofian from "@/assets/opt/client-sofian.webp";
@@ -41,19 +33,8 @@ const LOGOS = [
 ];
 
 function Counter({ value, prefix = "+", suffix }: { value: number; prefix?: string; suffix: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-  const [display, setDisplay] = useState(0);
-
-  useEffect(() => {
-    if (!inView) return;
-    const controls = animate(0, value, {
-      duration: 1.6,
-      ease: [0.16, 1, 0.3, 1],
-      onUpdate: (v) => setDisplay(Math.round(v)),
-    });
-    return () => controls.stop();
-  }, [inView, value]);
+  const { ref, inView } = useInViewOnce<HTMLSpanElement>("-80px");
+  const display = useCountUp(value, inView);
 
   return (
     <span ref={ref} className="tabular-nums">
@@ -127,51 +108,50 @@ function boxStyle(l: Logo) {
   } as const;
 }
 
-function ScrollLogo({ l, progress }: { l: Logo; progress: MotionValue<number> }) {
-  const start = 0.5 + l.order * 0.018;
-  const [shown, setShown] = useState(false);
+const POP = "0.5s cubic-bezier(0.34, 1.56, 0.64, 1)";
 
-  useEffect(() => {
-    if (progress.get() >= start) setShown(true);
-    return progress.on("change", (v) => {
-      if (v >= start) setShown(true);
-    });
-  }, [progress, start]);
-
+/** Logo that pops in once the sideways scroll has gone far enough. */
+function ScrollLogo({ l, shown }: { l: Logo; shown: boolean }) {
   return (
-    <motion.div
-      style={boxStyle(l)}
-      initial={false}
-      animate={shown ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.4 }}
-      transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
+    <div
+      style={{
+        ...boxStyle(l),
+        opacity: shown ? 1 : 0,
+        transform: `scale(${shown ? 1 : 0.4})`,
+        transition: `opacity ${POP}, transform ${POP}`,
+      }}
       className="absolute aspect-square -translate-x-1/2 -translate-y-1/2"
     >
       <LogoImg l={l} />
-    </motion.div>
+    </div>
   );
 }
 
+/** Logo that pops in when it scrolls into view (used when animations are turned off in settings). */
 function ViewLogo({ l }: { l: Logo }) {
+  const { ref, inView } = useInViewOnce<HTMLDivElement>("-40px");
   return (
-    <motion.div
-      style={boxStyle(l)}
-      initial={{ opacity: 0, scale: 0.5 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.5, delay: l.order * 0.08, ease: [0.34, 1.56, 0.64, 1] }}
+    <div
+      ref={ref}
+      style={{
+        ...boxStyle(l),
+        opacity: inView ? 1 : 0,
+        transform: `scale(${inView ? 1 : 0.5})`,
+        transition: `opacity ${POP} ${l.order * 0.08}s, transform ${POP} ${l.order * 0.08}s`,
+      }}
       className="absolute aspect-square -translate-x-1/2 -translate-y-1/2"
     >
       <LogoImg l={l} />
-    </motion.div>
+    </div>
   );
 }
 
-function LogoCloud({ progress }: { progress?: MotionValue<number> }) {
+function LogoCloud({ shownCount }: { shownCount?: number }) {
   return (
     <div className="relative mx-auto aspect-[16/9] w-full max-w-3xl">
       {LOGOS.map((l) =>
-        progress ? (
-          <ScrollLogo key={l.name} l={l} progress={progress} />
+        shownCount !== undefined ? (
+          <ScrollLogo key={l.name} l={l} shown={l.order < shownCount} />
         ) : (
           <ViewLogo key={l.name} l={l} />
         ),
@@ -185,14 +165,31 @@ export function Clients() {
   const followersLabel = lang === "fr" ? "FOLLOWERS" : "followers";
   const viewsLabel = lang === "fr" ? "vues" : "views";
   const trackRef = useRef<HTMLDivElement>(null);
-  const reduced = useReducedMotion();
-
-  const { scrollYProgress } = useScroll({
-    target: trackRef,
-    offset: ["start start", "end end"],
-  });
+  const slideRef = useRef<HTMLDivElement>(null);
+  const [reduced, setReduced] = useState(false);
+  const [shownCount, setShownCount] = useState(0);
   const panels = CLIENTS.length + 1;
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", `-${(100 * (panels - 1)) / panels}%`]);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sync = () => setReduced(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  // Sideways scroll: slides the panels left as you scroll down, and pops the logos in.
+  useEffect(() => {
+    const track = trackRef.current;
+    const slide = slideRef.current;
+    if (!track || !slide) return;
+    return onScrollProgress(track, "track", (p) => {
+      slide.style.transform = `translate3d(${-((100 * (panels - 1)) / panels) * p}%, 0, 0)`;
+      const count =
+        p < 0.5 ? 0 : Math.min(LOGOS.length, Math.floor((p - 0.5) / 0.018) + 1);
+      setShownCount((prev) => (count > prev ? count : prev));
+    });
+  }, [reduced, panels]);
 
   return (
     <section id="clients" className="bg-background">
@@ -225,7 +222,7 @@ export function Clients() {
       ) : (
         <div ref={trackRef} className="relative h-[300vh]">
           <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-            <motion.div style={{ x }} className="flex">
+            <div ref={slideRef} className="flex will-change-transform">
               {CLIENTS.map((c) => (
                 <ClientPanel
                   key={c.handle}
@@ -235,12 +232,12 @@ export function Clients() {
                 />
               ))}
               <div className="flex w-screen shrink-0 flex-col items-center justify-center gap-12 px-6">
-                <LogoCloud progress={scrollYProgress} />
+                <LogoCloud shownCount={shownCount} />
                 <p className="whitespace-pre-line text-center text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
                   {t.clients.more}
                 </p>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       )}

@@ -1,22 +1,10 @@
-import { animate, useInView } from "motion/react";
-import { useEffect, useRef, useState } from "react";
 import { Reveal } from "./Reveal";
 import { useLang } from "@/lib/i18n";
+import { useCountUp, useInViewOnce } from "@/lib/motion";
 
 function Counter({ value, suffix }: { value: number; suffix: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-  const [display, setDisplay] = useState(0);
-
-  useEffect(() => {
-    if (!inView) return;
-    const controls = animate(0, value, {
-      duration: 1.6,
-      ease: [0.16, 1, 0.3, 1],
-      onUpdate: (v) => setDisplay(Math.round(v)),
-    });
-    return () => controls.stop();
-  }, [inView, value]);
+  const { ref, inView } = useInViewOnce<HTMLSpanElement>("-60px");
+  const display = useCountUp(value, inView);
 
   return (
     <span ref={ref} className="tabular-nums">

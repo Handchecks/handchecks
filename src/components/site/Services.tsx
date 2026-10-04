@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { Video, MessageCircle } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { useLang } from "@/lib/i18n";
@@ -50,15 +49,9 @@ export function Services() {
               <article className="group h-full rounded-3xl border border-border bg-card p-8 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_-30px_rgba(0,0,0,0.35)] sm:p-10">
                 <div className="flex items-start justify-between">
                   <span className="text-xs tracking-[0.2em] text-muted-foreground">{item.tag}</span>
-                  <motion.span
-                    className="text-foreground"
-                    initial={{ opacity: 0, y: -6 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-80px" }}
-                    transition={{ duration: 0.8, delay: 0.3 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  >
+                  <Reveal as="span" y={-6} delay={0.3 + i * 0.1} className="text-foreground">
                     <Icon />
-                  </motion.span>
+                  </Reveal>
                 </div>
                 <h3 className="mt-6 text-2xl font-semibold sm:text-3xl">{item.name}</h3>
 

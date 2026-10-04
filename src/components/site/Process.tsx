@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { Inbox } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { useLang } from "@/lib/i18n";
@@ -75,15 +74,9 @@ export function Process() {
                       <span className="text-sm tabular-nums text-muted-foreground">{s.n}</span>
                       <h3 className="text-2xl font-semibold sm:text-3xl">{s.t}</h3>
                     </div>
-                    <motion.span
-                      className="shrink-0 text-foreground"
-                      initial={{ opacity: 0, y: -6 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-80px" }}
-                      transition={{ duration: 0.8, delay: 0.3 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                    >
+                    <Reveal as="span" y={-6} delay={0.3 + i * 0.12} className="shrink-0 text-foreground">
                       <Icon />
-                    </motion.span>
+                    </Reveal>
                   </div>
 
                   <p className="mt-4 pl-10 text-sm leading-relaxed text-muted-foreground sm:text-base">
