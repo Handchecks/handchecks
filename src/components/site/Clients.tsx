@@ -61,6 +61,9 @@ function ClientPanel({
           src={c.image}
           alt={`${c.handle} profile`}
           loading="lazy"
+          decoding="async"
+          width={224}
+          height={224}
           className="h-40 w-40 rounded-full object-cover sm:h-56 sm:w-56"
         />
         <div>

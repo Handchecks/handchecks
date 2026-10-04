@@ -49,14 +49,14 @@ export function Hero() {
 
         <p
           className="hero-fade mt-10 text-xs uppercase tracking-[0.28em] text-white/45"
-          style={rise(0, 0.25)}
+          style={rise(0, 0.1)}
         >
           {t.hero.eyebrow}
         </p>
 
         <h1
           className="hero-in mt-6 text-4xl font-semibold leading-[1.05] sm:text-6xl md:text-7xl"
-          style={rise(24, 0.35)}
+          style={rise(24, 0.15)}
         >
           {t.hero.title}
           <span className="block text-white/45">{t.hero.titleAccent}</span>
@@ -64,12 +64,12 @@ export function Hero() {
 
         <p
           className="hero-in mx-auto mt-8 max-w-2xl text-base leading-relaxed text-white/60 sm:text-lg"
-          style={rise(20, 0.5)}
+          style={rise(20, 0.22)}
         >
           {t.hero.sub}
         </p>
 
-        <div className="hero-in mt-12" style={rise(20, 0.65)}>
+        <div className="hero-in mt-12" style={rise(20, 0.3)}>
           <a
             href="#booking"
             className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-medium text-black transition-transform hover:scale-[1.04]"

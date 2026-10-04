@@ -221,12 +221,10 @@
   from {
     opacity: 0;
     transform: translate3d(0, 16px, 0);
-    filter: blur(8px);
   }
   to {
     opacity: 1;
     transform: none;
-    filter: blur(0);
   }
 }
 @keyframes hero-bob {
@@ -239,13 +237,13 @@
   }
 }
 .hero-in {
-  animation: hero-rise 1s cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0s) both;
+  animation: hero-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0s) both;
 }
 .hero-fade {
-  animation: hero-fade 0.8s ease var(--delay, 0s) both;
+  animation: hero-fade 0.5s ease var(--delay, 0s) both;
 }
 .hero-logo {
-  animation: hero-logo 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: hero-logo 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 .hero-bob {
   animation: hero-bob 2.4s ease-in-out infinite;
